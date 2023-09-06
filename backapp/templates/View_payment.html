@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+{% extends 'adminpage.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div class="col-12 grid-margin stretch-card">
+
+    <div class="card">
+
+
+       <div class="card-body">
+                  <h4 class="card-title" style="color:black;">PAYMENT DETAILES</h4>
+                  <p class="card-description">
+
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                             Name
+                          </th>
+                          <th>
+                            Country
+                          </th>
+                          <th>
+                            Street Address
+                          </th> <th>
+                            City
+                          </th>
+
+                          <th>
+                            Phone
+                          </th>
+
+                          <th>
+                            Email
+                          </th>
+                          <th>
+                            Payment
+                          </th>
+
+
+                          <th>
+                            OPTIONS
+                          </th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for d in data %}
+                        <tr>
+                          <td >
+                            {{d.Fname}}
+                          </td>
+                          <td>
+                            {{d.Country}}
+                          </td>
+                          <td>
+
+                             {{d.Address}}
+
+                          </td>
+                            <td>
+
+                             {{d.City}}
+
+                          </td>
+                            <td>
+
+                             {{d.Phone}}
+
+                          </td>
+                            <td>
+
+                             {{d.Email}}
+
+                          </td >
+                            <td>
+
+                             {{d.Payment}}
+
+                          </td>
+
+
+
+
+
+
+                      <form action="{% url 'Delete_payment' dataid=d.id %}">
+                      <td>
+                      <button type="submit" class="btn btn-danger">DELETE</button>
+                      </td>
+                        </form>
+
+                        </tr>
+
+
+
+
+
+
+
+
+
+
+                      {% endfor %}
+
+
+
+
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                </div>
+             </div>
+
+
+</body>
+</html>
+{% endblock %}

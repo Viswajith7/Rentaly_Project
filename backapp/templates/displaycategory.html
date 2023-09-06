@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+{% extends 'adminpage.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div class="col-12 grid-margin stretch-card">
+
+    <div class="card">
+
+
+       <div class="card-body">
+                  <h4 class="card-title" style="color:black;">Striped Table</h4>
+                  <p class="card-description">
+
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                            CATEGORY NAME
+                          </th>
+                          <th>
+                            DISCRIPTIONS
+                          </th>
+                          <th>
+                            IMAGE
+                          </th>
+                          <th>
+                            OPTIONS
+                          </th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for d in data %}
+                        <tr>
+                          <td class="py-1">
+                            {{d.Category_Name}}
+                          </td>
+                          <td>
+                            {{d.Discription}}
+                          </td>
+                          <td>
+
+                             <img src="{{d.C_Image.url}}">
+
+                          </td>
+
+
+
+                      <form action="{% url 'editcategory' dataid=d.id %}">
+                      <td>
+
+                          <button type="submit" class="btn btn-primary mr-2">Edit</button>
+                      </td>
+                        </form>
+
+                      <form action="{% url 'deletecategory' dataid=d.id %}">
+                      <td>
+                      <button type="submit" class="btn btn-danger">DELETE</button>
+                      </td>
+                        </form>
+
+                        </tr>
+
+
+
+
+
+
+
+
+
+
+                      {% endfor %}
+
+
+
+
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                </div>
+             </div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   {% if messages %}
+       {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+              swal('{{i}}','','warning');
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}','','error');
+            </script>
+        {% else %}
+            <script>
+                swal('{{i}}','','success');
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+</body>
+</html>
+{% endblock %}

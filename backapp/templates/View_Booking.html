@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+{% extends 'adminpage.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div class="col-12 grid-margin stretch-card">
+
+    <div class="card">
+
+
+       <div class="card-body">
+                  <h4 class="card-title" style="color:black;">MESSAGES</h4>
+                  <p class="card-description">
+
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                             USER_NAME
+                          </th>
+                          <th>
+                            PICK_UP_LOCATION
+                          </th>
+                          <th>
+                            DROP_OFF_LOCATION
+                          </th> <th>
+                            PICK_UP_DATE
+                          </th>
+
+                          <th>
+                            PICK_UP_TIME
+                          </th>
+
+                          <th>
+                            NO_OF_DAYS
+                          </th>
+                          <th>
+                            TOTAL_PRICE
+                          </th>
+
+
+
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for d in data %}
+                        <tr>
+                          <td >
+                            {{d.User}}
+                          </td>
+                          <td>
+                            {{d.PickupLocation}}
+                          </td>
+                          <td>
+
+                             {{d.DropoffLocation}}
+
+                          </td>
+                            <td>
+
+                             {{d.PickUpDate}}
+
+                          </td>
+                            <td>
+
+                             {{d.PickUpTime}}
+
+                          </td>
+                            <td>
+
+                             {{d.No_days}}
+
+                          </td >
+                            <td>
+
+                             {{d.Totalprice}}
+
+                          </td>
+
+
+
+
+
+
+
+
+                        </tr>
+
+
+
+
+
+
+
+
+
+
+                      {% endfor %}
+
+
+
+
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                </div>
+             </div>
+
+
+</body>
+</html>
+{% endblock %}

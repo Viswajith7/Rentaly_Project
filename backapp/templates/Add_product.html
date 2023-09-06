@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+{% extends 'adminpage.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">ADD CARS</h4>
+
+                           <form class="forms-sample" method="post" ACTION="{% url 'Save_product' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="form-group">
+                        <label for="exampleSelectGender">Category name</label>
+                        <select class="form-control" id="exampleSelectGender" name="category">
+                          <option>Select category</option>
+                          {% for d in data %}
+                          <option>{{d.Category_Name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+
+                    <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Enter car name" name="car">
+                      </div>
+
+
+                       <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Model number</label>
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Enter car name" name="model">
+                      </div>
+
+                          <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Horse power</label>
+                        <input type="text" class="form-control" id="exampleInputName3" placeholder="Enter car name" name="power">
+                      </div>
+
+                            <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Seat</label>
+                        <input type="text" class="form-control" id="exampleInputName4" placeholder="Enter car name" name="ceat">
+                      </div>
+
+                                <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Body</label>
+                        <input type="text" class="form-control" id="exampleInputName5" placeholder="Enter car name" name="body">
+                      </div>
+
+                                <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Rental cost</label>
+                        <input type="text" class="form-control" id="exampleInputName6" placeholder="Enter car name" name="price">
+                      </div>
+                                  <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Airbag</label>
+                        <input type="text" class="form-control" id="exampleInputName7" placeholder="Enter car name" name="airbag">
+                      </div>
+
+                         <div class="form-group" style="color:black ;">
+                        <label>File upload</label>
+                        <input type="file" name="img[]" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                          <input type="file" name="image1" class="form-control file-upload-info"  placeholder="Upload Image">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                          </span>
+                        </div>
+                      </div>
+                                      <div class="form-group" style="color:black ;">
+                        <label>File upload</label>
+                        <input type="file" name="img[]" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                          <input type="file" name="image2" class="form-control file-upload-info"  placeholder="Upload Image">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                          </span>
+                        </div>
+                      </div>
+
+                                    <div class="form-group" style="color:black ;">
+                        <label>File upload</label>
+                        <input type="file" name="img[]" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                          <input type="file" name="image3" class="form-control file-upload-info"  placeholder="Upload Image">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                          </span>
+                        </div>
+                      </div>
+
+
+
+
+
+
+
+                      <div class="form-group">
+                        <label for="exampleInputCity1">Colour</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Enter the colour" name="colour">
+                      </div>
+                             <div class="form-group">
+                        <label for="exampleInputCity1">Transmission</label>
+                        <input type="text" class="form-control" id="exampleInputCity2" placeholder="Enter the colour" name="transmission">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleTextarea1">Discription</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="discription"></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <button class="btn btn-light">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   {% if messages %}
+       {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+              swal('{{i}}','','warning');
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}','','error');
+            </script>
+        {% else %}
+            <script>
+                swal('{{i}}','','success');
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+
+
+</body>
+</html>
+{% endblock %}

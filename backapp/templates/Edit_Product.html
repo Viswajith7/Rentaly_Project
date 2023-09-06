@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+{% extends 'adminpage.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Basic form elements</h4>
+
+                           <form class="forms-sample" method="post" ACTION="{% url 'Update_product' dataid=data.id %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="form-group">
+                        <label for="exampleSelectGender">Category name</label>
+                        <select class="form-control" id="exampleSelectGender" name="category" value="{{data.Category_names}}">
+                          <option>Select category</option>
+                          {% for d in da %}
+                          <option>{{d.Category_Name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+
+                    <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Enter car name" name="car" value="{{data.Car_name}}">
+                      </div>
+
+
+                       <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Model number</label>
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Enter car name" name="model" value="{{data.Model}}">
+                      </div>
+
+                          <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Horse power</label>
+                        <input type="text" class="form-control" id="exampleInputName3" placeholder="Enter car name" name="power" value="{{data.Hpower}}">
+                      </div>
+
+                            <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Seat</label>
+                        <input type="text" class="form-control" id="exampleInputName4" placeholder="Enter car name" name="ceat" value="{{data.Ceat}}">
+                      </div>
+
+                                <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Body</label>
+                        <input type="text" class="form-control" id="exampleInputName5" placeholder="Enter car name" name="body" value="{{data.Body}}">
+                      </div>
+
+                                <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Rental cost</label>
+                        <input type="text" class="form-control" id="exampleInputName6" placeholder="Enter car name" name="price" value="{{data.Price}}">
+                      </div>
+                                    <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Airbag</label>
+                        <input type="text" class="form-control" id="exampleInputName7" placeholder="Enter car name" name="airbag" value="{{data.Airbag}}">
+                      </div>
+
+                         <div class="form-group" style="color:black ;">
+                        <label>File upload</label>
+                        <input type="file" name="img[]" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                          <img src="{{data.P_Image1.url}}" width="100px" height="100px">
+                          <input type="file" name="image1" class="form-control file-upload-info"  placeholder="Upload Image">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                          </span>
+                        </div>
+                      </div>
+
+                                      <div class="form-group" style="color:black ;">
+                        <label>File upload</label>
+                        <input type="file" name="img[]" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                          <img src="{{data.P_Image2.url}}" width="100px" height="100px">
+                          <input type="file" name="image2" class="form-control file-upload-info"  placeholder="Upload Image">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                          </span>
+                        </div>
+                      </div>
+
+
+                                         <div class="form-group" style="color:black ;">
+                        <label>File upload</label>
+                        <input type="file" name="img[]" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                          <img src="{{data.P_Image3.url}}" width="100px" height="100px">
+                          <input type="file" name="image3" class="form-control file-upload-info"  placeholder="Upload Image">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                          </span>
+                        </div>
+                      </div>
+
+
+
+
+                      <div class="form-group">
+                        <label for="exampleInputCity1">Colour</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Enter the colour" name="colour" value="{{data.Colour}}">
+                      </div>
+                                  <div class="form-group">
+                        <label for="exampleInputCity1">Transmission</label>
+                        <input type="text" class="form-control" id="exampleInputCity2" placeholder="Enter the colour" name="transmission" value="{{data.Transmission}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleTextarea1">Discription</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="discription">{{data.Discriptions}}</textarea>
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <button class="btn btn-light">Cancel</button>
+                                </form>
+                  </div>
+                </div>
+              </div>
+
+
+</body>
+</html>
+{% endblock %}

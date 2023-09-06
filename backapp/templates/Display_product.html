@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+{% extends 'adminpage.html' %}
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Striped Table</h4>
+
+                    </p>
+                    <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th> Category Name </th>
+                          <th> Car </th>
+                          <th> Modal </th>
+                          <th> HP </th>
+                          <th> Ceat </th>
+                          <th> Body </th>
+                          <th> Price </th>
+                          <th> Airbags </th>
+                          <th> Colour </th>
+                          <th> Transmission </th>
+                          <th> Discription</th>
+                          <th> Car Image </th>
+                          <th> Car Image_2 </th>
+
+                          <th> Car Image_3 </th>
+
+                          <th> Option </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+
+                      {% for d in data %}
+                        <tr>
+
+                          <td>{{d.Category_names}} </td>
+
+                          <td>{{d.Car_name}}</td>
+                          <td>{{d.Model}}</td>
+                          <td>{{d.Hpower}}</td>
+                          <td>{{d.Ceat}}</td>
+                          <td>{{d.Body}}</td>
+                          <td>{{d.Price}}</td>
+                          <td>{{d.Airbag}}</td>
+                          <td>{{d.Colour}}</td>
+                          <td>{{d.Transmission}}</td>
+                          <td>{{d.Discriptions}}</td>
+                          <td>
+                            <img src="{{d.P_Image1.url}}">
+                          </td>
+                            <td>
+                            <img src="{{d.P_Image2.url}}">
+                          </td>
+
+ <td>
+                            <img src="{{d.P_Image3.url}}">
+                          </td>
+
+
+
+                      <form action="{% url 'Edit_product' dataid=d.id %}">
+
+                       <td>
+                          <button type="submit" class="btn btn-primary mr-2">Edit</button>
+                            </td>
+
+                        </form>
+
+
+                      <form action="{% url 'Delete_product' dataid=d.id %}">
+                      <td>
+                      <button type="submit" class="btn btn-danger">DELETE</button>
+                      </td>
+                        </form>
+
+
+                        </tr>
+
+                      {% endfor %}
+
+
+
+
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   {% if messages %}
+       {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+              swal('{{i}}','','warning');
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}','','error');
+            </script>
+        {% else %}
+            <script>
+                swal('{{i}}','','success');
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+
+</body>
+</html>
+{% endblock %}

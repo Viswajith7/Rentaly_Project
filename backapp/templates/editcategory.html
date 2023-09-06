@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% extends 'adminpage.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card-body">
+    <div style="color:Green ;text-align:center;">
+        <h4 class="card-title">ADD CATEGORY</h4> </div>
+
+                    <form class="forms-sample" method="post" ACTION="{% url 'updatecategory' dataid=data.id  %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="form-group" style="color:Black ;">
+                        <label for="exampleInputName1">Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Enter your category" name="Cname" value="{{data.Category_Name}}">
+                      </div>
+
+
+
+
+                      <div class="form-group"style="color:black ;">
+                        <label for="exampleTextarea1">DISCRIPTION</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="C_discription">{{data.Discription}}</textarea>
+                      </div>
+
+                         <div class="form-group" style="color:black ;">
+                        <label>File upload</label>
+                        <input type="file" name="img[]" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                            <img src="{{data.C_Image.url}}">
+                          <input type="file" name="C_image" class="form-control file-upload-info"  placeholder="Upload Image">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                          </span>
+                        </div>
+                      </div>
+
+
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <button class="btn btn-light">Cancel</button>
+                    </form>
+                  </div>
+
+
+</body>
+{% endblock %}
